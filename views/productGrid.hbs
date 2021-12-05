@@ -193,11 +193,11 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <ul class="htc__pagenation">
-                            <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li> 
-                            <li class="active"><a href="#">1</a></li> 
-                            <li><a href="/product?page=2">2</a></li>   
-                            <li><a href="/product?page=3">3</a></li> 
-                            <li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li> 
+                            {{!-- <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>  --}}
+                            {{#each pagItems}}
+                                <li class="{{#if cur}}active{{/if}}"><a href="/product?page={{item}}&price={{../priceStr}}">{{item}}</a></li>
+                            {{/each}}
+                            {{!-- <li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>  --}}
                         </ul>
                     </div>
                 </div>
@@ -215,7 +215,7 @@
                                     <div class="slider__range--output">
                                         <div class="price__output--wrap">
                                             <div class="price--output">
-                                                <span>Price :</span><input type="text" id="amount" name="price" readonly>
+                                                <span>Price :</span><input type="text" id="amount" name="price" value="{{priceStr}}" readonly>
                                             </div>
                                             <div class="price--filter">
                                                 <input type="submit" value="Filter">

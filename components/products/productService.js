@@ -2,7 +2,7 @@ const {models} = require('../../models')
 const { Op } = require("sequelize");
 
 exports.list = (page = 1, priceMin, priceMax, itemPerPage = 9) => { 
-    return models.sach.findAll({ 
+    return models.sach.findAndCountAll({ 
         where: {STATUS: 'Active', 
                 GIA: {[Op.between]: [priceMin, priceMax]}}, 
         offset: (page-1)*itemPerPage, 
