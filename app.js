@@ -8,9 +8,9 @@ const helmet = require('helmet');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-
 const productRouter = require('./components/products');
-
+const authRouter = require('./auth/authRouter');
+const loginRouter = require('./routes/loginRouter');
 const app = express();
 
 app.use(helmet());
@@ -25,10 +25,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', authRouter);
 app.use('/users', usersRouter);
 app.use('/product', productRouter);
-
+app.use('/checkout', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
