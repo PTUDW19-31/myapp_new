@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="checkout-method__login">
-                                                <form method="post">
+                                                <form method="post" action="/checkout/login">
                                                     <h5 class="checkout-method__title">Login</h5>
                                                     <h5 class="checkout-method__title">Already Registered?</h5>
                                                     <p class="checkout-method__subtitle">Please login below:</p>
@@ -66,7 +66,9 @@
                                                     </div>
                                                     <p class="require">* Required fields</p>
                                                     <a href="#">Forgot Passwords?</a>
-                                                    <button type="submit" class="dark-btn">LogIn</button>
+                                                    <div class="dark-btn">
+                                                        <input type="submit" value="Log in">
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
