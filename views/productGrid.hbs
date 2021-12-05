@@ -210,15 +210,15 @@
                         <h4 class="title__line--4">Price</h4>
                         <div class="content-shopby">
                             <div class="price_filter s-filter clear">
-                                <form action="#" method="GET">
+                                <form action="/filter/" method="GET">
                                     <div id="slider-range"></div>
                                     <div class="slider__range--output">
                                         <div class="price__output--wrap">
                                             <div class="price--output">
-                                                <span>Price :</span><input type="text" id="amount" readonly>
+                                                <span>Price :</span><input type="text" id="amount" name="amount" readonly>
                                             </div>
                                             <div class="price--filter">
-                                                <a href="#">Filter</a>
+                                                <input type="submit" value="Filter">
                                             </div>
                                         </div>
                                     </div>

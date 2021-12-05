@@ -1644,7 +1644,7 @@
 .slider__range--output {
     margin-top: 18px;
 }
-.price--filter a {
+.price--filter input{
     text-transform: uppercase;
     background: #333333;
     color: #fff;
@@ -1665,7 +1665,7 @@
 .price--output input {
     border: medium none;
 }
-.price--filter a:hover{
+.price--filter input:hover{
     background: #c43b68;
     color: #fff;
 }
@@ -3310,7 +3310,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     background: transparent;
     border: 1px solid #c43b68;
 }
-.accordion__body .checkout-method__login .dark-btn{
+.accordion__body .checkout-method__login .dark-btn input{
     margin-top: 20px;
 }
 
@@ -3526,7 +3526,7 @@ ul.htc__instagram__posts.owl-carousel li img {
 
 
 /*Buttons*/
-.dark-btn a{
+.dark-btn input{
     display: inline-block;
     height: 45px;
     line-height: 45px;
@@ -3541,7 +3541,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     font-size: 16px;
     transition: all 0.3s ease-in-out 0s;
 }
-.dark-btn a:hover{
+.dark-btn input:hover{
     background: #c43b68;
 }
 
