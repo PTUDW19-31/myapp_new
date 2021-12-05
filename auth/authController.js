@@ -1,9 +1,9 @@
 const accountService = require('./accountService');
 
-exports.add = async(req, res) => {
+exports.resister = async(req, res) => {
     const {email, password} = req.body;
     try {    
-        const account = await accountService.add(email, password);
+        const account = await accountService.resister(email, password);
         if(account){
             return res.render('checkout',{message: 'Success'});
         }
