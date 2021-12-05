@@ -8,6 +8,12 @@ router.post('/checkout',
         successRedirect: '/',
         failureRedirect: '/checkout',
     }),
+    function (req, res) {
+        if(req.user)
+            res.redirect('/');
+        else
+            res.redirect('/checkout');
+    }
 );
 
 module.exports = router;

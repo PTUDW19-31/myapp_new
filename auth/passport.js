@@ -8,7 +8,7 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
     },
     function(username, password, done) {
-        account.findOne({ EMAIL: username }, function(err, user) {
+        account.findOne({ email: username }, function(err, user) {
         if (err) { return done(err); }
         if (!user) {
             return done(null, false, { message: 'Incorrect username.' });
@@ -24,3 +24,5 @@ passport.use(new LocalStrategy({
 function validPassword(user, password){
     return user.Password === password;
 }
+
+module.exports = passport;
