@@ -3282,35 +3282,35 @@ ul.htc__instagram__posts.owl-carousel li img {
 .accordion__body__form .checkout-method .checkout-method__single .single-input input[type="radio"]{
     margin-right: 10px;
 }
-.accordion__body .checkout-method__login p.require{
+.accordion__body .checkout-method__login .checkout-method__register p.require{
     color: #f10;
     letter-spacing: 1px;
 }
-.accordion__body .checkout-method__login .single-input{
+.accordion__body .checkout-method__login .checkout-method__register .single-input{
     margin-bottom: 20px;
 }
-.accordion__body .checkout-method__login .single-input label{
+.accordion__body .checkout-method__login .checkout-method__register .single-input label{
     font-weight: 500;
     color: #000;
 }
-.accordion__body .checkout-method__login .single-input label:before{
+.accordion__body .checkout-method__login .checkout-method__register .single-input label:before{
     content: "*";
     padding-right: 15px;
     color: #c2a476;
 }
-.accordion__body .checkout-method__login .single-input input{
+.accordion__body .checkout-method__login .checkout-method__register .single-input input{
     height: 32px;
     line-height: 32px;
     padding-left: 15px;
     background: #f6f6f6;
     border: 1px solid #f6f6f6;
 }
-.accordion__body .checkout-method__login .single-input input:focus,
-.accordion__body .checkout-method__login .single-input input:active{
+.accordion__body .checkout-method__login .checkout-method__register .single-input input:focus,
+.accordion__body .checkout-method__login .checkout-method__register .single-input input:active{
     background: transparent;
     border: 1px solid #c43b68;
 }
-.accordion__body .checkout-method__login .dark-btn input{
+.accordion__body .checkout-method__login .checkout-method__register .dark-btn input{
     margin-top: 20px;
 }
 

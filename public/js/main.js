@@ -432,5 +432,19 @@
 })(jQuery);
 
 
-
-
+/*-----------------------------------------------
+    21. Checkout area
+-------------------------------------------------*/
+    $('.checkout-method').ready(() => {
+        $('.checkout-method__login').show();
+        $('.checkout-method__register').hide();
+        $('.checkout-method').on('change','input', () => {
+            if ($('#checkout-method-1').is( ":checked" )) {
+                $('.checkout-method__login').show();
+                $('.checkout-method__register').hide();}
+            else {
+                $('.checkout-method__register').show();
+                $('.checkout-method__login').hide();
+            }
+        });
+    });
