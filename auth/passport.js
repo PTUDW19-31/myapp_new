@@ -7,18 +7,21 @@ passport.use(new LocalStrategy({
     usernameField: 'EMAIL',
     passwordField: 'PASSWORD'
     },
-    async function(username, password, done) {
-        const user = await models.account.findOne({ EMAIL: username, ROLE: 'User' }, function(err, user) {
-        if (err) { return done(err); }
-        if (!user) {
+    async function (username, password, done) {
+        try {
+            const user = await models.account.findOne({ EMAIL: username, ROLE: 'User' }).lean();
+            if (!user) {
             return done(null, false, { message: 'Incorrect username.' });
+            }
+            if (!validPassword(user, password)) {
+                return done(null, false, { message: 'Incorrect password.' });
+            }
+            return done(null, user);
         }
-        if (!validPassword(user, password)) {
-            return done(null, false, { message: 'Incorrect password.' });
-        }
-        return done(null, user);
-        });
-    }
+        catch (err) {
+            return done(err);
+        }      
+    },
 ));
 
 passport.serializeUser(function(user, done) {
