@@ -4,12 +4,12 @@ const bcrypt = require('bcrypt');
 const {models} = require('../models');
 
 passport.use(new LocalStrategy({
-    usernameField: 'EMAIL',
-    passwordField: 'PASSWORD'
+    usernameField: 'email',
+    passwordField: 'password'
     },
     async function(username, password, done) {
-        const user = await models.account.findOne({ EMAIL: username, ROLE: 'User' }, function(err, user) {
-        if (err) { return done(err); }
+        const user = await models.account.findOne({ where: {EMAIL: username, ROLE: 'User'}, raw: true });
+
         if (!user) {
             return done(null, false, { message: 'Incorrect username.' });
         }
@@ -17,7 +17,7 @@ passport.use(new LocalStrategy({
             return done(null, false, { message: 'Incorrect password.' });
         }
         return done(null, user);
-        });
+        
     }
 ));
 

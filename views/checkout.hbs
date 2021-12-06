@@ -32,6 +32,11 @@
                             <div class="accordion__body">
                                 <div class="accordion__body__form">
                                     <div class="row">
+                                    {{#if user}}
+                                    
+                                        <p>Hello, {{user.owner}}</p>
+                                        <a href="/checkout/logout">Use another account</a>
+                                    {{else}}
                                         <div class="col-md-7">
                                             <div class="checkout-method">
                                                 <form action="#">
@@ -92,15 +97,15 @@
                                                     <p class="checkout-method__subtitle">Please sign up below:</p>
                                                     <div class="single-input">
                                                         <label for="fullname">Full Name</label>
-                                                        <input type="text" id="fullname"  required="">
+                                                        <input type="text" id="fullname" name="fullname" required="">
                                                     </div>
                                                     <div class="single-input">
                                                         <label for="emailaddress">Email address</label>
-                                                        <input type="email" id="emailaddress" required="" >
+                                                        <input type="email" id="emailaddress" name="email" required="" >
                                                     </div>
                                                     <div class="single-input">
                                                         <label for="password">Password</label>
-                                                        <input type="password" required="" id="password" >
+                                                        <input type="password" id="password" name="password" required="" >
                                                     </div>
                                                     <div class="single-input">
                                                         <div class="custom-control custom-checkbox">
@@ -110,11 +115,14 @@
                                                     </div>
                                                     <div class="dark-btn">
                                                         <input type="submit" value="Sign up">
+                                                        <p>{{message}}</p>
                                                     </div>
 
                                                 </form>
                                             </div>
                                         </div>
+                                    
+                                    {{/if}}
                                     </div>
                                 </div>
                             </div>

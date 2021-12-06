@@ -14,12 +14,10 @@ router.post('/login',
     }),
 );
 
-router.post('/register', (req, res) => {
-    authController.resister;
-
-})
+router.post('/register', authController.registerAndAuth);
 router.get('/logout', (req, res) => {
     req.logout();
+    res.redirect('/checkout');
 });
 
 module.exports = router;

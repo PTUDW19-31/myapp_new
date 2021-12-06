@@ -6,11 +6,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Welcom! || Asbab - eCommerce' });
 });
 
-/* GET check out page. */
-router.get('/checkout', function(req, res, next) {
-  res.render('checkout', { title: 'Check out || Asbab - eCommerce' });
-});
-
 /* GET cart page. */
 router.get('/cart', function(req, res, next) {
   res.render('cart', { title: 'Cart || Asbab - eCommerce' });
