@@ -62,7 +62,7 @@ function normalizePort(val) {
 
   if (port >= 0) {
     // port number
-    console.log('Run at port: ',port);
+    console.log('Listening on ',port);
     return port;
   }
 
