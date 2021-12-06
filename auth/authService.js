@@ -1,7 +1,7 @@
-const {models} = require('../../models');
+const {models} = require('../models');
 const bcrypt = require('bcrypt'); 
 
-exports.resister = async(email, password) => {
+exports.resister = async(fullname, email, password) => {
     const user = await models.account.findOne({ where: {EMAIL: email}, raw: true });
     if(user){
         return null;
@@ -10,6 +10,6 @@ exports.resister = async(email, password) => {
     return models.account.create({
         EMAIL: email,
         PASSWORD: hashPassword,
-        ROLE: 'User'
+        OWNER: fullname,
     });
 }

@@ -436,6 +436,7 @@
     21. Checkout area
 -------------------------------------------------*/
     $('.checkout-method').ready(() => {
+        $('#checkout-method-1').prop('checked', true);
         $('.checkout-method__login').show();
         $('.checkout-method__register').hide();
         $('.checkout-method').on('change','input', () => {

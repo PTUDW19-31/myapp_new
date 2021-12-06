@@ -68,13 +68,16 @@
                                                     <h5 class="checkout-method__title">Login</h5>
                                                     <h5 class="checkout-method__title">Already Registered?</h5>
                                                     <p class="checkout-method__subtitle">Please login below:</p>
+                                                    {{#if wrongLogin}}
+                                                        <p style="color: red;">Wrong email or password</p>
+                                                    {{/if}}
                                                     <div class="single-input">
                                                         <label for="user-email">Email Address</label>
-                                                        <input type="email" id="user-email" name="email">
+                                                        <input type="email" id="user-email" name="email" required="">
                                                     </div>
                                                     <div class="single-input">
                                                         <label for="user-pass">Password</label>
-                                                        <input type="password" id="user-pass" name="password">
+                                                        <input type="password" id="user-pass" name="password" required="">
                                                     </div>
                                                     <p class="require">* Required fields</p>
                                                     <a href="#">Forgot Passwords?</a>
@@ -84,8 +87,8 @@
                                                 </form>
                                             </div>
                                             <div class="checkout-method__register">
-                                                <form action="#">
-                                                    <h5 class="checkout-method__title">Registered</h5>
+                                                <form action="/checkout/register" method="post">
+                                                    <h5 class="checkout-method__title">Register</h5>
                                                     <p class="checkout-method__subtitle">Please sign up below:</p>
                                                     <div class="single-input">
                                                         <label for="fullname">Full Name</label>

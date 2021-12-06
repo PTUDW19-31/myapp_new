@@ -1,11 +1,12 @@
-const accountService = require('./accountService');
+const accountService = require('./authService');
 
 exports.resister = async(req, res) => {
-    const {email, password} = req.body;
+    const {fullname, email, password} = req.body;
     try {    
-        const account = await accountService.resister(email, password);
+        const account = await accountService.resister(fullname, email, password);
         if(account){
-            return res.render('checkout',{message: 'Success'});
+            res.render('checkout',{message: 'Success'});
+            return res.redirect('/login');
         }
         else {
             return res.render('checkout',{message: 'Account is existed !!! Try again!'});
