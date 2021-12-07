@@ -20,13 +20,17 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     IMAGE: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.TEXT,
       allowNull: true
     },
     STATUS: {
       type: DataTypes.STRING(20),
       allowNull: true,
       defaultValue: "Active"
+    },
+    IMAGE_PUBLICID: {
+      type: DataTypes.STRING(50),
+      allowNull: true
     }
   }, {
     sequelize,

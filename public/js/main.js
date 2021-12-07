@@ -436,9 +436,19 @@
     21. Checkout area
 -------------------------------------------------*/
     $('.checkout-method').ready(() => {
-        $('#checkout-method-1').prop('checked', true);
-        $('.checkout-method__login').show();
-        $('.checkout-method__register').hide();
+        
+        var wrongSignup = getParameterByName('wrongSignup');
+        if (wrongSignup === '') {
+            $('#checkout-method-2').prop('checked', true)
+            $('.checkout-method__register').show();
+            $('.checkout-method__login').hide();
+        }
+        else {
+        
+            $('#checkout-method-1').prop('checked', true);
+            $('.checkout-method__login').show();
+            $('.checkout-method__register').hide();
+        }
         $('.checkout-method').on('change','input', () => {
             if ($('#checkout-method-1').is( ":checked" )) {
                 $('.checkout-method__login').show();
@@ -449,3 +459,11 @@
             }
         });
     });
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }

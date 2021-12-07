@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('./passport');
-const authController = require('./authController')
 
 router.get('/', (req,res) => {
-    res.render('checkout', {wrongLogin: req.query.wrongLogin !== undefined})
+    res.render('checkout', { wrongLogin: req.query.wrongLogin !== undefined,
+                            wrongSignup: req.query.wrongSignup !== undefined});
 });
 
 router.post('/login',
@@ -14,7 +14,13 @@ router.post('/login',
     }),
 );
 
-router.post('/register', authController.registerAndAuth);
+router.post('/register', 
+    passport.authenticate('local-signup', {
+        successRedirect: '/checkout',
+        failureRedirect: '/checkout?wrongSignup',
+    }),
+);
+
 router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/checkout');
