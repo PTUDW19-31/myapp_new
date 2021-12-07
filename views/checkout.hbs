@@ -33,8 +33,10 @@
                                 <div class="accordion__body__form">
                                     <div class="row">
                                         {{#if user}}
-                                        <p style="color:darkcyan; font-weight: bold; font-size:xx-large">Welcome, {{user.owner}}! It’s all about you...</p>
-                                        <a href="/checkout/logout">Use another account</a>
+                                        <div class="col-md-12">
+                                            <p style="color:darkcyan; font-weight: bold; font-size:xx-large; margin-bottom: 10px;">Welcome, {{user.owner}}! It’s all about you...</p>
+                                            <a style="margin: 10px" href="/checkout/logout">Use another account</a>
+                                        </div>
                                         {{else}}
                                         <div class="col-md-7">
                                             <div class="checkout-method">
