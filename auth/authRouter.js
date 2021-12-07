@@ -6,6 +6,7 @@ const authService = require('./authService');
 router.get('/', async(req,res) => {
     if(req.user) {
         const user_info = await authService.user_info(req.user.accountID);
+
         return res.render('checkout',{user_info});
     }
     res.render('checkout', { wrongLogin: req.query.wrongLogin !== undefined,
@@ -34,6 +35,7 @@ router.get('/logout', (req, res) => {
 
 router.post('/info/update', async(req, res) => {
     await authService.update_info(req.user.accountID, req.body);
+    req.user.owner = req.body.fullname;
     res.redirect('/checkout');
 });
 

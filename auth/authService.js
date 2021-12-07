@@ -27,4 +27,10 @@ exports.update_info = async(ID, info) => {
         },
         {where: {MAKH: ID}}
     );
+    await models.account.update(
+        {
+            OWNER: info.fullname,
+        },
+        {where: {ID: ID}}
+    );
 };
