@@ -7,14 +7,21 @@ const compression = require('compression');
 const helmet = require('helmet');
 const session = require('express-session');
 const passport = require('./auth/passport');
+const expressHandlebarsSections = require('express-handlebars-sections');
+const app = express();
+
+app.engine('handlebars', express_handlebars({
+    section: express_handlebars_sections() 
+}));
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productRouter = require('./components/products');
 const authRouter = require('./auth/authRouter');
 const loginRouter = require('./routes/loginRouter');
+const apiProductRouter = require('./api/product');
 
-const app = express();
+
 
 app.use(helmet());
 app.use(compression()); //Compress all routes
@@ -40,6 +47,8 @@ app.use('/users', usersRouter);
 app.use('/product', productRouter);
 app.use('/checkout', authRouter);
 app.use('/', indexRouter);
+
+app.use('/api/product', apiProductRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
