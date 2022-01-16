@@ -10,11 +10,7 @@ router.get('/', function(req, res, next) {
 router.get('/cart', function(req, res, next) {
   res.render('cart', { title: 'Cart || Asbab - eCommerce' });
 });
-
-/* GET home page. */
-router.get('/wishlist', function(req, res, next) {
-  res.render('wishlist', { title: 'Wishlist || Asbab - eCommerce' });
-});
+router.post('/cart/add')
 
 /* GET contact page. */
 router.get('/contact', function(req, res, next) {

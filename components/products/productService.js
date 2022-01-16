@@ -10,9 +10,13 @@ exports.list = (page = 1, priceMin, priceMax, itemPerPage = 9) => {
 };
 
 exports.detail = (ItemID) => {
-    return models.sach.findAll({
+    return models.sach.findOne({
         where: {
             MASACH: ItemID
-        }
+        },
+        include: [{
+            model: models.chitietsach, 
+            as: 'chitietsach',
+        }],
     });
 }

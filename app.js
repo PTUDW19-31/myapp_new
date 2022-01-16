@@ -4,12 +4,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const compression = require('compression');
-const helmet = require('helmet');
+
 const session = require('express-session');
 const passport = require('./auth/passport');
 const app = express();
+const Handlebars = require('handlebars');
 const exphbs = require('express-handlebars');
 const sessionHandler = require('./components/session/sessionHandler');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
 // app.engine('handlebars', express_handlebars({
 //     section: express_handlebars_sections() 
@@ -31,16 +33,16 @@ const hbs = exphbs.create({
         this._sections[name] = options.fn(this); 
         return null;
       }
-  }    
+  },  
+  handlebars: allowInsecurePrototypeAccess(Handlebars),  
 });
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
-app.use(helmet());
 app.use(compression()); //Compress all routes
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'hbs');
+app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
