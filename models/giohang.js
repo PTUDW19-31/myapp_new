@@ -1,14 +1,10 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('giohang', {
-    MAKH: {
+    IDCART: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'khachhang',
-        key: 'MAKH'
-      }
+      primaryKey: true
     },
     MASACH: {
       type: DataTypes.INTEGER,
@@ -17,6 +13,14 @@ module.exports = function(sequelize, DataTypes) {
       references: {
         model: 'sach',
         key: 'MASACH'
+      }
+    },
+    MAKH: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'khachhang',
+        key: 'MAKH'
       }
     },
     SOLUONG: {
@@ -37,8 +41,15 @@ module.exports = function(sequelize, DataTypes) {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "MAKH" },
+          { name: "IDCART" },
           { name: "MASACH" },
+        ]
+      },
+      {
+        name: "fk_giohang_khachhang",
+        using: "BTREE",
+        fields: [
+          { name: "MAKH" },
         ]
       },
       {

@@ -7,6 +7,7 @@ var _giohang = require("./giohang");
 var _hoadon = require("./hoadon");
 var _khachhang = require("./khachhang");
 var _sach = require("./sach");
+var _unknowcart = require("./unknowcart");
 
 function initModels(sequelize) {
   var account = _account(sequelize, DataTypes);
@@ -17,13 +18,10 @@ function initModels(sequelize) {
   var hoadon = _hoadon(sequelize, DataTypes);
   var khachhang = _khachhang(sequelize, DataTypes);
   var sach = _sach(sequelize, DataTypes);
+  var unknowcart = _unknowcart(sequelize, DataTypes);
 
   hoadon.belongsToMany(sach, { as: 'MASACH_saches', through: chitiethoadon, foreignKey: "SOHD", otherKey: "MASACH" });
-  khachhang.belongsToMany(sach, { as: 'MASACH_sach_giohangs', through: giohang, foreignKey: "MAKH", otherKey: "MASACH" });
   sach.belongsToMany(hoadon, { as: 'SOHD_hoadons', through: chitiethoadon, foreignKey: "MASACH", otherKey: "SOHD" });
-  sach.belongsToMany(khachhang, { as: 'MAKH_khachhangs', through: giohang, foreignKey: "MASACH", otherKey: "MAKH" });
-  khachhang.belongsTo(account, { as: "MAKH_account", foreignKey: "MAKH"});
-  account.hasMany(khachhang, { as: "khachhangs", foreignKey: "MAKH"});
   chitiethoadon.belongsTo(hoadon, { as: "SOHD_hoadon", foreignKey: "SOHD"});
   hoadon.hasMany(chitiethoadon, { as: "chitiethoadons", foreignKey: "SOHD"});
   comment.belongsTo(khachhang, { as: "MAKH_khachhang", foreignKey: "MAKH"});
@@ -50,6 +48,7 @@ function initModels(sequelize) {
     hoadon,
     khachhang,
     sach,
+    unknowcart,
   };
 }
 module.exports = initModels;
