@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "sequelize": "npx sequelize-auto -o ./models -d dbbanhang -h webdb.co4zzammbawy.ap-southeast-1.rds.amazonaws.com -u root -p 3306 -x 12345678 -e mysql"
   },
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
