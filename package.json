@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --inspect ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "compress": "^0.99.0",
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",

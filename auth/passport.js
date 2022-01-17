@@ -1,6 +1,6 @@
 const passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const {sequelize, models} = require('../models');
 
 passport.use(new LocalStrategy({
