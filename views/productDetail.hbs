@@ -10,7 +10,7 @@
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                             <a class="breadcrumb-item" href="product">Products</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                            <span class="breadcrumb-item active">ean shirt</span>
+                            <span class="breadcrumb-item active">{{productDetail.MASACH}}</span>
                         </nav>
                     </div>
                 </div>
@@ -49,12 +49,9 @@
                             <div class="sin__desc align--left">
                                 <p><span>Categories:</span></p>
                                 <ul class="pro__cat__list">
-                                    <li><a href="#">Novel,</a></li>
-                                    <li><a href="#">Self-helf,</a></li>
-                                    <li><a href="#">Comedy,</a></li>
-                                    <li><a href="#">Art,</a></li>
-                                    <li><a href="#">Biology,</a></li>
-                                    <li><a href="#">Math,</a></li>
+                                    {{#each ../bookCategory}}
+                                    <li><a href="#">{{this.NAME}}</a></li>
+                                    {{/each}}
                                 </ul>
                             </div>
                         </div>

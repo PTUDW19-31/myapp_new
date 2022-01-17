@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const ProductController = require('./productController');
 
-/* GET home page. */
+/* GET product page. */
 router.get('/', ProductController.list);
 
 router.get('/:ProductID',ProductController.detail);
