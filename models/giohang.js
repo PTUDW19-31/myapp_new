@@ -15,20 +15,8 @@ module.exports = function(sequelize, DataTypes) {
         key: 'MASACH'
       }
     },
-    MAKH: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'khachhang',
-        key: 'MAKH'
-      }
-    },
     SOLUONG: {
       type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    DONGIA: {
-      type: DataTypes.FLOAT,
       allowNull: true
     }
   }, {
@@ -43,13 +31,6 @@ module.exports = function(sequelize, DataTypes) {
         fields: [
           { name: "IDCART" },
           { name: "MASACH" },
-        ]
-      },
-      {
-        name: "fk_giohang_khachhang",
-        using: "BTREE",
-        fields: [
-          { name: "MAKH" },
         ]
       },
       {

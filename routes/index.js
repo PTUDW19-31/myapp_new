@@ -1,10 +1,13 @@
 var express = require('express');
+var productController = require('../components/products/productController')
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Welcom! || Asbab - eCommerce' });
-});
+router.get('/', productController.listNewProduct)
+
+// function(req, res, next) {
+//   res.render('index', { title: 'Welcom! || Asbab - eCommerce' });
+// });
 
 /* GET cart page. */
 router.get('/cart', function(req, res, next) {

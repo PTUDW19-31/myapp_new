@@ -18,17 +18,21 @@ exports.list = async (req, res) => {
     res.render('productGrid', { products: products.rows, pagItems, priceStr });
 }
 
+exports.listNewProduct = async (req, res) => {
+    const newProduct = await productService.getNewProduct();
+    res.render('index', { title: 'Welcom! || Asbab - eCommerce', newProduct });
+}
 exports.detail = async (req, res) => {
-    let ItemID = '001';
+    let ItemID = '1';
     try {
         ItemID = req.params.ProductID; 
         const productDetail = await productService.detail(ItemID); 
-        res.render('productDetail', { productDetail });
+        const bookCategory = await productService.getBookCategory(ItemID)
+        res.render('productDetail', { productDetail, bookCategory });
     } catch(error) {
         res.render('error', { error });
     } 
 };
-
 
 paginationFunc = (page, totalPage) => {
     var current = page,

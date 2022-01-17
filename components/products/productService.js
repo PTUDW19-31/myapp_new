@@ -20,3 +20,18 @@ exports.detail = (ItemID) => {
         }],
     });
 }
+
+exports.getBookCategory = async(ItemID) => {
+    return models.sach_has_category.findAll({
+        where: {MASACH: ItemID},
+        raw: true
+    })
+}
+
+exports.getNewProduct = async() => {
+    return models.sach.findAll({
+        order: [['MASACH', 'DESC']],
+        limit: 8,
+        raw: true
+    })
+}
