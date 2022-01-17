@@ -2,13 +2,15 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('unknowcart', {
     UNID: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(255),
       allowNull: false,
       primaryKey: true
     },
     IDCART: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: false,
+      unique: "IDCART_UNIQUE"
     }
   }, {
     sequelize,
@@ -21,6 +23,14 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "UNID" },
+        ]
+      },
+      {
+        name: "IDCART_UNIQUE",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "IDCART" },
         ]
       },
     ]

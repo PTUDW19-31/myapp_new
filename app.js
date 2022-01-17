@@ -23,6 +23,7 @@ const productRouter = require('./components/products');
 const authRouter = require('./auth/authRouter');
 const loginRouter = require('./routes/loginRouter');
 const apiProductRouter = require('./api/product');
+const cartRouter = require('./components/cart');
 
 const hbs = exphbs.create({
   defaultLayout: "layout",
@@ -49,7 +50,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(session({ 
+  secret: process.env.SESSION_SECRET,
+  cookie: {maxAge: 24 * 60 * 60 * 1000}
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -60,7 +64,7 @@ app.use(function(req, res, next) {
 
 app.use(sessionHandler);
 
-
+app.use('/cart', cartRouter);
 app.use('/users', usersRouter);
 app.use('/product', productRouter);
 app.use('/checkout', authRouter);

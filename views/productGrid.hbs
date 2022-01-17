@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="fr__hover__info">
                                                 <ul class="product__action">
-                                                    <li><a href="/cart"><i class="icon-handbag icons"></i></a></li>
+                                                    <li><a name="addcart" id="{{MASACH}}"><i class="icon-handbag icons"></i></a></li>
                                                 </ul>
                                             </div>
                                             <div class="fr__product__inner">
@@ -72,7 +72,7 @@
                                                 </ul>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisLorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqul Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                                 <div class="fr__list__btn">
-                                                    <a class="fr__btn" href="/cart">Add To Cart</a>
+                                                    <a class="fr__btn" name="addcart">Add To Cart</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -245,7 +245,7 @@
 <!-- End Banner Area -->
 
 <!-- Placed js at the end of the document so the pages load faster -->
-
+{{#section 'script'}}
 <!-- jquery latest version -->
 <script src="js/vendor/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap framework js -->
@@ -258,3 +258,18 @@
 <script src="js/waypoints.min.js"></script>
 <!-- Main js file that contents all jQuery plugins activation. -->
 <script src="js/main.js"></script>
+<script>
+    $('[name="addcart"]').on('click', e => {
+        e.preventDefault();
+        let masach = e.currentTarget.id;
+        $.ajax({
+            url: '/api/product/addcart',
+            method: 'POST',
+            data: { masach },
+            success: function(data){
+                console.log(data);
+            }
+        })
+    })
+</script>
+{{/section}}

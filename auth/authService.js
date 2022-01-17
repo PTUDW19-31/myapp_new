@@ -9,6 +9,21 @@ exports.user_info = async(ID) => {
             info.DISTRICT = address[1];
             info.CITY = address[2];
         }
+        // const cartItems = null
+        // const total = null
+        // const cart = info.IDCART;
+        // if(cart){
+        //     cartItems = await models.giohang.findAll({
+        //         where: {IDCART: cart}, raw: true
+        //     });
+
+
+        //     for(let item of cartItems)
+        //     {
+        //         total+= Number(item.MASACH_sach.GIA)*Number(item.SOLUONG);
+        //     }
+        // }
+        //return {info, cartItems, total};
         return info;
     }catch(err){
         return null;

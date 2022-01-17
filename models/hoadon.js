@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     MAKH: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'khachhang',
         key: 'MAKH'
@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "fk_hoadon_khachhang",
+        name: "fk_hoadon_khachhang1_idx",
         using: "BTREE",
         fields: [
           { name: "MAKH" },

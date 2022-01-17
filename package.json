@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon --inspect ./bin/www"
   },
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
@@ -28,6 +28,7 @@
     "uuidv4": "^6.2.12"
   },
   "devDependencies": {
+    "nodemon": "^2.0.15",
     "sequelize-auto": "^0.8.5"
   }
 }

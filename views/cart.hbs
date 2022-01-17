@@ -16,58 +16,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each products}}
                                 <tr>
-                                    <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/1.jpg" alt="product img" /></a></td>
-                                    <td class="product-name"><a href="#">New Dress For Sunday</a>
-                                        <ul  class="pro__prize">
-                                            <li class="old__prize">$82.5</li>
-                                            <li>$75.2</li>
-                                        </ul>
+                                    <td class="product-thumbnail"><a href="#"><img src="{{MASACH_sach.IMAGE}}" alt="product img" /></a></td>
+                                    <td class="product-name"><a href="/product/{{MASACH_sach.MASACH}}">{{MASACH_sach.TENSACH}}</a></td>
+                                    <td class="product-price"><span class="amount">{{MASACH_sach.GIA}}$</span></td>
+                                    <td class="product-quantity"><input type="number" id="{{MASACH}}" value="{{SOLUONG}}" min="1"/>
                                     </td>
-                                    <td class="product-price"><span class="amount">£165.00</span></td>
-                                    <td class="product-quantity"><input type="number" value="1" /></td>
                                     <td class="product-subtotal">£165.00</td>
-                                    <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
+                                    <td class="product-remove"><a name="deletecart" id="{{MASACH}}" href=""><i class="icon-trash icons"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/2.jpg" alt="product img" /></a></td>
-                                    <td class="product-name"><a href="#">New Dress For Sunday</a>
-                                        <ul  class="pro__prize">
-                                            <li class="old__prize">$82.5</li>
-                                            <li>$75.2</li>
-                                        </ul>
-                                    </td>
-                                    <td class="product-price"><span class="amount">£50.00</span></td>
-                                    <td class="product-quantity"><input type="number" value="1" /></td>
-                                    <td class="product-subtotal">£50.00</td>
-                                    <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/3.jpg" alt="product img" /></a></td>
-                                    <td class="product-name"><a href="#">New Dress For Sunday</a>
-                                        <ul  class="pro__prize">
-                                            <li class="old__prize">$82.5</li>
-                                            <li>$75.2</li>
-                                        </ul>
-                                    </td>
-                                    <td class="product-price"><span class="amount">£50.00</span></td>
-                                    <td class="product-quantity"><input type="number" value="1" /></td>
-                                    <td class="product-subtotal">£50.00</td>
-                                    <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/4.jpg" alt="product img" /></a></td>
-                                    <td class="product-name"><a href="#">New Dress For Sunday</a>
-                                        <ul  class="pro__prize">
-                                            <li class="old__prize">$82.5</li>
-                                            <li>$75.2</li>
-                                        </ul>
-                                    </td>
-                                    <td class="product-price"><span class="amount">£50.00</span></td>
-                                    <td class="product-quantity"><input type="number" value="1" /></td>
-                                    <td class="product-subtotal">£50.00</td>
-                                    <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
@@ -75,10 +34,10 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="buttons-cart--inner">
                                 <div class="buttons-cart">
-                                    <a href="#">Continue Shopping</a>
+                                    <a href="/product">Continue Shopping</a>
                                 </div>
                                 <div class="buttons-cart checkout--btn">
-                                    <a href="#">checkout</a>
+                                    <a href="/checkout">checkout</a>
                                 </div>
                             </div>
                         </div>
@@ -124,17 +83,25 @@
     </ul>
 </div>
 <!-- End Banner Area -->
-<!-- Placed js at the end of the document so the pages load faster -->
 
-<!-- jquery latest version -->
-<script src="js/vendor/jquery-3.2.1.min.js"></script>
-<!-- Bootstrap framework js -->
-<script src="js/bootstrap.min.js"></script>
-<!-- All js plugins included in this file. -->
-<script src="js/plugins.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<!-- Waypoints.min.js. -->
-<script src="js/waypoints.min.js"></script>
-<!-- Main js file that contents all jQuery plugins activation. -->
-<script src="js/main.js"></script>
+
+{{!-- {{#section 'script'}}
+<script>
+    $('[name="deletecart"]').on('click', e => {
+        e.preventDefault();
+        let id=e.currentTarget.id.split('-')[1];
+        let quantity = document.getElementById(id).value;
+        $.ajax({
+            url: '/api/product/updateQuantity/'+id,
+            method: 'POST',
+            data: { quantity },
+            success: 
+                $.getJSON('/api/product/getQuantity/'+id,function(data){
+                    let number = data.quantity
+                    document.getElementById(id).setAttribute(value,number);
+                })
+        })
+    })
+
+</script>
+{{/section}} --}}
