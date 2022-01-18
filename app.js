@@ -24,6 +24,7 @@ const authRouter = require('./auth/authRouter');
 const loginRouter = require('./routes/loginRouter');
 const apiProductRouter = require('./api/product');
 const cartRouter = require('./components/cart');
+const paymentRouter =require('./components/payment');
 
 const hbs = exphbs.create({
   defaultLayout: "layout",
@@ -67,6 +68,7 @@ app.use(sessionHandler);
 app.use('/cart', cartRouter);
 app.use('/users', usersRouter);
 app.use('/product', productRouter);
+app.use('/checkout/payment',paymentRouter);
 app.use('/checkout', authRouter);
 app.use('/', indexRouter);
 

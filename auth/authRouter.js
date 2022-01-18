@@ -5,10 +5,10 @@ const authService = require('./authService');
 
 router.get('/', async(req,res) => {
     if(req.user) {
-        const {user_info, cartItems, total} = await authService.user_info(req.user.accountID);
+        const {info, cartItems, bill} = await authService.user_info(req.user.accountID);
 
-        // return res.render('checkout',{user_info, cartItems, total});
-        return res.render('checkout',{user_info});
+        return res.render('checkout',{info, cartItems, bill});
+        //return res.render('checkout',{user_info});
     }
     res.render('checkout', { wrongLogin: req.query.wrongLogin !== undefined,
                             wrongSignup: req.query.wrongSignup !== undefined

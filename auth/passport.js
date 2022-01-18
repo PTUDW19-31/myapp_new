@@ -9,7 +9,7 @@ passport.use(new LocalStrategy({
     passReqToCallback : true
     },
     async function(req, username, password, done) {
-        const user = await models.account.findOne({ where: {EMAIL: username, ROLE: 'User'}, raw: true });
+        const user = await models.account.findOne({ where: {EMAIL: username, ROLE: 'User', STATUS: 'Active'}, raw: true });
 
         if (!user) {
             return done(null, false, { message: 'Incorrect username.' });
