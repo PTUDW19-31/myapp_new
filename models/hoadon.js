@@ -8,16 +8,33 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     NGAYLAPHD: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.TEXT,
       allowNull: true
     },
     MAKH: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'khachhang',
         key: 'MAKH'
       }
+    },
+    NGUOINHAN: {
+      type: DataTypes.STRING(45),
+      allowNull: true
+    },
+    DIACHI: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    PHONE: {
+      type: DataTypes.STRING(11),
+      allowNull: true
+    },
+    STATUS: {
+      type: DataTypes.STRING(45),
+      allowNull: true,
+      defaultValue: "Chưa thanh toán"
     }
   }, {
     sequelize,
@@ -33,7 +50,7 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "fk_hoadon_khachhang1_idx",
+        name: "fk_hoadon_khachhang",
         using: "BTREE",
         fields: [
           { name: "MAKH" },

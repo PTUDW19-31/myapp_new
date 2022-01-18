@@ -11,4 +11,7 @@ router.post('/addcart',apiProductController.addcart);
 router.post('/updateQuantity/:id',apiProductController.updatequantity);
 router.get('/getQuantity/:id',apiProductController.getUpdatequantity);
 
+router.post('/deleteCart',apiProductController.deleteCart);
+
+
 module.exports = router;

@@ -142,3 +142,23 @@ exports.getUpdatequantity = async(req,res) => {
         });
     }
 }
+
+exports.deleteCart = async(req,res) => {
+    const userID = (req.user ? req.user.accountID : req.session.unID);
+    const idProduct = req.body.id;
+    try{
+        let cart = await models.unknowcart.findOne({ where: { UNID: userID } });
+        if(!cart){
+            cart = await models.khachhang.findOne({ where: { MAKH: userID } });
+        }
+        let IDcart = cart.IDCART;
+        const deleteCart = await models.giohang.destroy({where: {IDCART: IDcart, MASACH: idProduct}});
+        if(deleteCart)
+            res.status(200).json(deleteCart);
+    }catch(err){
+        res.status(500).json({
+            message: 'delete Failed',
+            error:err
+        });
+    }
+}
