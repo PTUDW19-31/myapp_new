@@ -98,7 +98,7 @@
                                     <div class="slider__range--output">
                                         <div class="price__output--wrap">
                                             <div class="price--output">
-                                                <span>Price :</span><input type="text" id="amount" name="price" value="{{priceStr}}" readonly>
+                                                <span>Price :</span><input type="text" id="amount" name="price" value="{{price}}" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -121,6 +121,10 @@
                                                 {{option this.CATEGORY_ID this.NAME ../cat_id}}
                                                 {{/each}}                      
                                             </select>
+                                        </div>
+                                        <div class="autocomplete">
+                                            <label>Search: </label>
+                                            <input type="text" id="myInput" name="search" placeholder="&#x1F50E; Enter book's title" value="{{search}}">
                                         </div>
                                     {{!-- </div> --}}
                                     <div class="price--filter pt-2">
@@ -193,7 +197,7 @@
 </div>
 <!-- End Brand Area -->
 <!-- Start Banner Area -->
-<div class="htc__banner__area">
+{{!-- <div class="htc__banner__area">
     <ul class="banner__list owl-carousel owl-theme clearfix">
         <li><a href="product/Detail"><img src="images/banner/bn-3/1.jpg" alt="banner images"></a></li>
         <li><a href="product/Detail"><img src="images/banner/bn-3/2.jpg" alt="banner images"></a></li>
@@ -204,23 +208,13 @@
         <li><a href="product/Detail"><img src="images/banner/bn-3/1.jpg" alt="banner images"></a></li>
         <li><a href="product/Detail"><img src="images/banner/bn-3/2.jpg" alt="banner images"></a></li>
     </ul>
-</div>
+</div> --}}
 <!-- End Banner Area -->
 
 <!-- Placed js at the end of the document so the pages load faster -->
 {{#section 'script'}}
 <!-- jquery latest version -->
-<script src="js/vendor/jquery-3.2.1.min.js"></script>
-<!-- Bootstrap framework js -->
-<script src="js/bootstrap.min.js"></script>
-<!-- All js plugins included in this file. -->
-<script src="js/plugins.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<!-- Waypoints.min.js. -->
-<script src="js/waypoints.min.js"></script>
-<!-- Main js file that contents all jQuery plugins activation. -->
-<script src="js/main.js"></script>
+
 <script>
     $('[name="addcart"]').on('click', e => {
         e.preventDefault();
@@ -236,3 +230,14 @@
     })
 </script>
 {{/section}}
+<script src="js/vendor/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap framework js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- All js plugins included in this file. -->
+<script src="js/plugins.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<!-- Waypoints.min.js. -->
+<script src="js/waypoints.min.js"></script>
+<!-- Main js file that contents all jQuery plugins activation. -->
+<script src="js/main.js"></script>

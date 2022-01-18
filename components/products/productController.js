@@ -7,9 +7,9 @@ exports.list = async (req, res) => {
     let {search} = req.query;
     page = Math.max(parseInt(page) || 1,1);
     cat_id = parseInt(cat_id) || -1;
-    var priceStr = req.query.price || "$0 - $500";
+    var price = req.query.price || "$0 - $500";
     var priceSort = req.query.priceSort || "";
-    var priceAtr = priceStr.split(/-/g);    
+    var priceAtr = price.split(/-/g);    
     priceMin = Math.max(parseInt(priceAtr[0].slice(1,4)), 0);
     priceMax = Math.min(parseInt(priceAtr[1].slice(2,5)), 500);
     
@@ -18,7 +18,7 @@ exports.list = async (req, res) => {
     //!isNaN(req.query.page) && req.query.page > 0 ? req.query.page - 1 : 0
     const TotalPage = Math.ceil(products.count/itemPerPage) > page ? Math.ceil(products.count/itemPerPage) : page 
     const pagItems = paginationFunc(page, TotalPage);
-    res.render('productGrid', { products: products.rows, pagItems, priceStr, priceSort, Categories, cat_id });
+    res.render('productGrid', { products: products.rows, pagItems, price, priceSort, Categories, cat_id, search });
 }
 
 exports.listNewProduct = async (req, res) => {
