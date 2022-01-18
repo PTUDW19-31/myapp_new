@@ -6,19 +6,7 @@
             <div class="col-lg-9 col-lg-push-3 col-md-9 col-md-push-3 col-sm-12 col-xs-12">
                 <div class="htc__product__rightidebar">
                     <div class="htc__grid__top">
-                        <div class="htc__select__option">
-                            <select class="ht__select">
-                                <option>Default sorting</option>
-                                <option>Sort by popularity</option>
-                                <option>Sort by average rating</option>
-                                <option>Sort by newness</option>
-                            </select>
-                            <select class="ht__select">
-                                <option>Lọc sách theo thể loại</option>
-                                <option>Tiểu thuyết</option>
-                                <option>Self-helf</option>                               
-                            </select>
-                        </div>
+                        
                         <!-- Start List And Grid View -->
                         <ul class="view__mode" role="tablist">
                             <li role="presentation" class="grid-view active"><a href="#grid-view" role="tab" data-toggle="tab"><i class="zmdi zmdi-grid"></i></a></li>
@@ -90,7 +78,7 @@
                         <ul class="htc__pagenation">
                             {{!-- <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>  --}}
                             {{#each pagItems}}
-                                <li class="{{#if cur}}active{{/if}}"><a href="/product?page={{item}}&price={{../priceStr}}">{{item}}</a></li>
+                                <li class="{{#if cur}}active{{/if}}"><a href="/product?page={{item}}&price={{../priceStr}}&priceSort={{../priceSort}}&cat_id={{../cat_id}}">{{item}}</a></li>
                             {{/each}}
                             {{!-- <li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>  --}}
                         </ul>
@@ -112,10 +100,31 @@
                                             <div class="price--output">
                                                 <span>Price :</span><input type="text" id="amount" name="price" value="{{priceStr}}" readonly>
                                             </div>
-                                            <div class="price--filter">
-                                                <input type="submit" value="Filter">
-                                            </div>
                                         </div>
+                                    </div>
+                                    {{!-- <div class="htc__select__option"> --}}
+                                        <div>
+                                            <label>Order by price: </label>
+                                            <select class="ht__select"  name="priceSort">
+                                                {{#selected priceSort}}
+                                                <option value="">None</option>
+                                                <option value="ASC">Ascending</option>
+                                                <option value="DESC">Descending</option>
+                                                {{/selected}}
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label>Filter by category: </label>
+                                            <select class="ht__select" name="cat_id">
+                                                {{!-- <option value=-1>Default</option> --}}
+                                                {{#each Categories}}
+                                                {{option this.CATEGORY_ID this.NAME ../cat_id}}
+                                                {{/each}}                      
+                                            </select>
+                                        </div>
+                                    {{!-- </div> --}}
+                                    <div class="price--filter pt-2">
+                                        <input type="submit" value="Filter">
                                     </div>
                                 </form>
                             </div>
@@ -124,7 +133,7 @@
                     <!-- End Prize Range -->                
                     
                     <!-- Start Best Sell Area -->
-                    <div class="htc__recent__product">
+                    {{!-- <div class="htc__recent__product">
                         <h2 class="title__line--4">best seller</h2>
                         <div class="htc__recent__product__inner">
                             <!-- Start Single Product -->
@@ -151,54 +160,9 @@
                                 </div>
                             </div>
                             <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="htc__best__product">
-                                <div class="htc__best__pro__thumb">
-                                    <a href="product/Detail">
-                                        <img src="images/product-2/sm-smg/2.jpg" alt="small product">
-                                    </a>
-                                </div>
-                                <div class="htc__best__product__details">
-                                    <h2><a href="product/Detail">Product Title Here</a></h2>
-                                    <ul class="rating">
-                                        <li><i class="icon-star icons"></i></li>
-                                        <li><i class="icon-star icons"></i></li>
-                                        <li><i class="icon-star icons"></i></li>
-                                        <li class="old"><i class="icon-star icons"></i></li>
-                                        <li class="old"><i class="icon-star icons"></i></li>
-                                    </ul>
-                                    <ul  class="pro__prize">
-                                        <li class="old__prize">$82.5</li>
-                                        <li>$75.2</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
-                            <!-- Start Single Product -->
-                            <div class="htc__best__product">
-                                <div class="htc__best__pro__thumb">
-                                    <a href="product/Detail">
-                                        <img src="images/product-2/sm-smg/1.jpg" alt="small product">
-                                    </a>
-                                </div>
-                                <div class="htc__best__product__details">
-                                    <h2><a href="product/Detail">Product Title Here</a></h2>
-                                    <ul class="rating">
-                                        <li><i class="icon-star icons"></i></li>
-                                        <li><i class="icon-star icons"></i></li>
-                                        <li><i class="icon-star icons"></i></li>
-                                        <li class="old"><i class="icon-star icons"></i></li>
-                                        <li class="old"><i class="icon-star icons"></i></li>
-                                    </ul>
-                                    <ul  class="pro__prize">
-                                        <li class="old__prize">$82.5</li>
-                                        <li>$75.2</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- End Single Product -->
+                        
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- End Best Sell Area -->
                 </div>
             </div>

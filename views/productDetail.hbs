@@ -8,7 +8,7 @@
                         <nav class="bradcaump-inner">
                             <a class="breadcrumb-item" href="/">Home</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                            <a class="breadcrumb-item" href="product">Products</a>
+                            <a class="breadcrumb-item" href="/product/">Products</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                             <span class="breadcrumb-item active">{{productDetail.MASACH}}</span>
                         </nav>
@@ -30,9 +30,6 @@
                 <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
                     <div class="ht__product__dtl">  
                         <h2>{{TENSACH}}</h2>
-                        {{#each bookCategory}}
-                        <h6>Thế loại: <span>{{CATEGORY.NAME}}</span></h6>
-                        {{/each}}
                         <ul>
                             <li>Price: {{GIA}}$</li>
                         </ul>
@@ -50,14 +47,14 @@
                             <div class="sin__desc">
                                 <p><span>Availability:</span> In Stock</p>
                             </div>                            
-                            {{!-- <div class="sin__desc align--left">
+                            <div class="sin__desc align--left">
                                 <p><span>Categories:</span></p>
                                 <ul class="pro__cat__list">
-                                    
-                                    <li><a href="#">{{CATEGORY.NAME}}</a></li>
-                                    
+                                    {{#each ../bookCategory}}
+                                    <li><a href="/product/?cat_id={{CATEGORY.CATEGORY_ID}}">{{CATEGORY.NAME}}</a></li>
+                                    {{/each}}
                                 </ul>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>                  
                 </div>                

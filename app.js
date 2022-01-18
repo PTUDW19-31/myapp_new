@@ -28,13 +28,7 @@ const cartRouter = require('./components/cart');
 const hbs = exphbs.create({
   defaultLayout: "layout",
   extname: "hbs",
-  helpers: {
-    section: function(name, options) { 
-      if (!this._sections) this._sections = {};
-        this._sections[name] = options.fn(this); 
-        return null;
-      }
-  },  
+  helpers: require('./helper/handlebar'),
   handlebars: allowInsecurePrototypeAccess(Handlebars),  
 });
 app.engine('hbs', hbs.engine);
