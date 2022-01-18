@@ -56,6 +56,12 @@
                                 </ul>
                             </div>
                         </div>
+                        <br>
+                        <ul>
+                            <div class="fr__list__btn">
+                                <a class="fr__btn" name="addcart" id="{{MASACH}}" href="">Add To Cart</a>
+                            </div>
+                        </ul>
                     </div>                  
                 </div>                
             </div>
@@ -134,34 +140,48 @@
 <!-- Main js file that contents all jQuery plugins activation. -->
 <script src="/js/main.js"></script>
 
-
-    <script>
-        $('#post-comment').on('click', e =>{
-            e.preventDefault();
-            let comment = $('input[name=comment').val();
-            let productId= $('input[name=productId').val();
-            $.ajax({
-                url:"/api/product/comment",
-                method:'POST',
-                data:{
-                    comment,
-                    productId
-                },
-                success: function(data){
-                    console.log(data);
-                    loadComments();
-                }
-            })
+<script>
+    $('[name="addcart"]').on('click', e => {
+        e.preventDefault();
+        let masach = e.currentTarget.id;
+        $.ajax({
+            url: '/api/product/addcart',
+            method: 'POST',
+            data: { masach },
+            success: function(data){
+                console.log(data);
+            }
         })
+    })
+</script>
 
-        function loadComments(){
-            $.getJSON('/api/product/${$('input[name=productId]').val()}/ratings',function(data){
-                let comment = data.comment;
-                let html='';
-                html+= `<p>${content}</p>;`
-                $('#comments').html(html); 
-            });
-        }
-        loadComments();
-    </script>
+<script>
+    $('#post-comment').on('click', e =>{
+        e.preventDefault();
+        let comment = $('input[name=comment').val();
+        let productId= $('input[name=productId').val();
+        $.ajax({
+            url:"/api/product/comment",
+            method:'POST',
+            data:{
+                comment,
+                productId
+            },
+            success: function(data){
+                console.log(data);
+                loadComments();
+            }
+        })
+    })
+
+    function loadComments(){
+        $.getJSON('/api/product/${$('input[name=productId]').val()}/ratings',function(data){
+            let comment = data.comment;
+            let html='';
+            html+= `<p>${content}</p>;`
+            $('#comments').html(html); 
+        });
+    }
+    loadComments();
+</script>
 {{/section}}
