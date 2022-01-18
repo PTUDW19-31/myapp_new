@@ -21,7 +21,7 @@
                                     <td class="product-thumbnail"><a href="#"><img src="{{MASACH_sach.IMAGE}}" alt="product img" /></a></td>
                                     <td class="product-name"><a href="/product/{{MASACH_sach.MASACH}}">{{MASACH_sach.TENSACH}}</a></td>
                                     <td class="product-price"><span class="amount">{{MASACH_sach.GIA}}$</span></td>
-                                    <td class="product-quantity"><input type="number" value="{{SOLUONG}}" min="1"/>
+                                    <td class="product-quantity"><input type="number" name="quantity" id={{MASACH}} value="{{SOLUONG}}" min="1"/>
                                     </td>
                                     {{!-- <td class="product-subtotal">£165.00</td> --}}
                                     <td class="product-remove"><a name="deletecart" id="{{MASACH}}" href=""><i class="icon-trash icons"></i></a></td>
@@ -101,4 +101,27 @@
     })
 
 </script>
+
+<script>
+    $('[name="quantity"]').on('change', e => {
+        e.preventDefault();
+        let id=e.currentTarget.id;
+        let quantity = document.getElementById(id).value;
+        console.log(id)
+        $.ajax({
+            url: '/api/product/updateQuantity/'+id,
+            method: 'POST',
+            data: { quantity },
+        })
+    })
+
+</script>
+
 {{/section}}
+
+{{!-- success: 
+                function(data){
+                    let number = data.quantity
+                    console.log(number)
+                    $("#quantity").val(number);
+                }) --}}
