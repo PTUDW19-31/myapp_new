@@ -1,7 +1,7 @@
 const productService = require('./productService');
 
 exports.list = async (req, res) => {
-    const itemPerPage = 9;
+    const itemPerPage = 6;
     let {page} = req.query;
     page = Math.max(parseInt(page) || 1,1);
 

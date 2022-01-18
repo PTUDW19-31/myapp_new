@@ -24,6 +24,10 @@ exports.detail = (ItemID) => {
 exports.getBookCategory = async(ItemID) => {
     return models.sach_has_category.findAll({
         where: {MASACH: ItemID},
+        include: [{
+            model: models.category,
+            as: 'CATEGORY'
+        }],
         raw: true
     })
 }
