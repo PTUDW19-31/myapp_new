@@ -11,7 +11,7 @@
                                     <th class="product-name">name of products</th>
                                     <th class="product-price">Price</th>
                                     <th class="product-quantity">Quantity</th>
-                                    <th class="product-subtotal">Total</th>
+                                    {{!-- <th class="product-subtotal">Total</th> --}}
                                     <th class="product-remove">Remove</th>
                                 </tr>
                             </thead>
@@ -21,9 +21,9 @@
                                     <td class="product-thumbnail"><a href="#"><img src="{{MASACH_sach.IMAGE}}" alt="product img" /></a></td>
                                     <td class="product-name"><a href="/product/{{MASACH_sach.MASACH}}">{{MASACH_sach.TENSACH}}</a></td>
                                     <td class="product-price"><span class="amount">{{MASACH_sach.GIA}}$</span></td>
-                                    <td class="product-quantity"><input type="number" id="{{MASACH}}" value="{{SOLUONG}}" min="1"/>
+                                    <td class="product-quantity"><input type="number" value="{{SOLUONG}}" min="1"/>
                                     </td>
-                                    <td class="product-subtotal">£165.00</td>
+                                    {{!-- <td class="product-subtotal">£165.00</td> --}}
                                     <td class="product-remove"><a name="deletecart" id="{{MASACH}}" href=""><i class="icon-trash icons"></i></a></td>
                                 </tr>
                                 {{/each}}
@@ -84,24 +84,21 @@
 </div>
 <!-- End Banner Area -->
 
-
-{{!-- {{#section 'script'}}
+{{#section 'script'}}
 <script>
     $('[name="deletecart"]').on('click', e => {
         e.preventDefault();
-        let id=e.currentTarget.id.split('-')[1];
-        let quantity = document.getElementById(id).value;
+        let id=e.currentTarget.id;
         $.ajax({
-            url: '/api/product/updateQuantity/'+id,
+            url: '/api/product/deleteCart',
             method: 'POST',
-            data: { quantity },
-            success: 
-                $.getJSON('/api/product/getQuantity/'+id,function(data){
-                    let number = data.quantity
-                    document.getElementById(id).setAttribute(value,number);
-                })
+            data: { id },
+            success: function(data){
+                console.log(data);
+                location.reload(true);
+            }
         })
     })
 
 </script>
-{{/section}} --}}
+{{/section}}
